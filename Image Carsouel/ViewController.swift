@@ -27,7 +27,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     var searchBar: UISearchBar!
     var searchBarContainer: UIView!
     var currentPageIndex: Int = 0
-    var currentTableImage : String = "1"
+    var currentTableImage: String = "1"
     
     // MARK: - Lifecycle Methods
     override func viewDidLoad() {
@@ -119,7 +119,12 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             tableView.heightAnchor.constraint(equalToConstant: view.frame.height * 2)
         ])
     }
-
+    
+    // MARK: - UITableViewDataSource
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return filteredItems.count
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! CustomTableViewCell
         cell.customLabel.text = filteredItems[indexPath.row]
@@ -127,7 +132,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         cell.customImageView.image = UIImage(named: (currentPageIndex + 1).description)
         return cell
     }
-
     
     // MARK: - Data Loading
     func loadLocalImages() {
@@ -167,13 +171,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         return collectionView.frame.size
     }
     
-    // MARK: - UITableViewDataSource
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filteredItems.count
-    }
-
-
-    
     // MARK: - UISearchBarDelegate
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         updateFilteredItems(searchText: searchText)
@@ -211,9 +208,31 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             let pageIndex = round(scrollView.contentOffset.x / scrollView.frame.size.width)
             currentPageIndex = Int(pageIndex)
             
+            // Update cell focus states
+            let visibleCells = collectionView.visibleCells
+            for cell in visibleCells {
+                let indexPath = collectionView.indexPath(for: cell)
+                if indexPath?.row == currentPageIndex {
+                    // Focus current cell
+                    UIView.animate(withDuration: 0.3, animations: {
+                        cell.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+                        cell.alpha = 1.0
+                    })
+                } else {
+                    // Unfocus other cells
+                    UIView.animate(withDuration: 0.3, animations: {
+                        cell.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+                        cell.alpha = 0.5
+                    })
+                }
+            }
+            
             updateTableViewContent()
         }
     }
+
+
+
     
     // MARK: - Utility Functions
     func updateTableViewContent() {
