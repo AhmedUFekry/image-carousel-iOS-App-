@@ -55,12 +55,7 @@ This iOS application showcases a simple UI with an image carousel and a searchab
 ## Contributions
 
 Feel free to fork this repository and submit pull requests. Issues and feature requests are also welcome.
+## Demo Video
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Acknowledgments
-
-- Special thanks to the iOS development community for their resources and guidance.
+[Watch the demo video](./demov.mp4)
 
