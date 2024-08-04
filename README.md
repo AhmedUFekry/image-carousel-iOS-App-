@@ -57,8 +57,8 @@ This iOS application showcases a simple UI with an image carousel and a searchab
 Feel free to fork this repository and submit pull requests. Issues and feature requests are also welcome.
 ## Demo Video
 
-[Watch the demo video](./demov.mp4)
+[Watch the demo video](./demo.mp4)
 
 ### GIF Preview
-![Demo](./demo4jif.gif)
+![Demo](./demojif.gif)
 
