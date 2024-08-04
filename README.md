@@ -59,3 +59,6 @@ Feel free to fork this repository and submit pull requests. Issues and feature r
 
 [Watch the demo video](./demov.mp4)
 
+### GIF Preview
+![Demo](./demo4jif.gif)
+
