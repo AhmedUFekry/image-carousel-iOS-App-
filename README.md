@@ -29,7 +29,7 @@ This iOS application showcases a simple UI with an image carousel and a searchab
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/yourusername/repository-name.git
+    git clone https://github.com/AhmedUFekry/image-carousel-iOS-App-
     ```
 
 2. Open the project in Xcode.
